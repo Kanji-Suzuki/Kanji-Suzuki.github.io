@@ -9,278 +9,76 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWZP4GoGfG7x7H3V5VBrYqKqQxwXgS5x1z4rN7v1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root{
-      --heading-gray:#5A5A5A; /* same as LaTeX headinggray */
-      --body-gray:#5A5A5A;    /* subtle gray for text */
-      --link-gold:#8A6D2F;    /* champagne gold for links */
+      --heading-gray:#5A5A5A;
+      --body-gray:#5A5A5A;
+      --link-gold:#8A6D2F;
       --bg:#ffffff;
-      --muted:#f7f7f7;
       --rule:#e6e6e6;
       --maxw:960px;
     }
-    html{scroll-behavior:smooth}
-    body{
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-      color:var(--body-gray);
-      background:var(--bg);
-      line-height:1.6;
-    }
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:24px 20px 80px}
-    header{display:flex; flex-wrap:wrap; align-items:flex-start; gap:16px 24px; margin-bottom:32px}
-    .brand{flex:1 1 380px}
-    h1{font-size:clamp(24px, 4.2vw, 36px); margin:0; color:var(--heading-gray)}
-    .meta{margin-top:8px; font-size:0.98rem}
-    .meta a{color:var(--link-gold); text-decoration:none}
+    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,'Noto Sans JP',sans-serif;color:var(--body-gray);background:var(--bg);line-height:1.6;}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 80px}
+    header{margin-bottom:32px}
+    h1{font-size:clamp(24px,4.2vw,36px);margin:0;color:var(--heading-gray)}
+    .meta{margin-top:8px;font-size:0.98rem}
+    .meta a{color:var(--link-gold);text-decoration:none}
     .meta a:hover{text-decoration:underline}
-
-    nav{position:sticky; top:0; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(6px); border-bottom:1px solid var(--rule); z-index:10}
-    .nav-inner{max-width:var(--maxw); margin:0 auto; display:flex; gap:18px; padding:10px 20px; overflow:auto}
-    .nav-inner a{font-size:0.95rem; color:var(--heading-gray); text-decoration:none; white-space:nowrap}
-    .nav-inner a:hover{color:var(--link-gold)}
-    .nav-inner .spacer{flex:1}
-    .lang-toggle{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--rule); border-radius:999px; padding:4px 10px; font-size:0.85rem; color:var(--heading-gray); background:#fff}
-    .lang-toggle button{border:none; background:none; cursor:pointer; padding:2px 4px; font:inherit; color:inherit}
-    .lang-toggle button.active{color:var(--link-gold); font-weight:600}
-    .lang-toggle button:focus{outline:2px solid var(--link-gold); outline-offset:2px}
-    .nav-inner a{font-size:0.95rem; color:var(--heading-gray); text-decoration:none; white-space:nowrap}
-    .nav-inner a:hover{color:var(--link-gold)}
-
-    section{padding:28px 0; border-bottom:1px solid var(--rule)}
-    section:last-of-type{border-bottom:none}
-    h2{font-size:1.25rem; letter-spacing:0.2px; color:var(--heading-gray); margin:0 0 14px}
-
-    /* timeline-esque entries */
-    .entry{display:grid; grid-template-columns: 1fr auto; gap:6px 18px; padding:6px 0}
-    .entry strong{font-weight:600}
-    .sub{font-style:italic}
-    .when{white-space:nowrap; color:#666}
-
-    /* lists */
-    ul{margin:0 0 0 1.1rem}
-    li{margin:6px 0}
-    .tag{display:inline-block; font-size:0.78rem; padding:2px 8px; border-radius:999px; background:var(--muted); margin-left:8px}
-
-    /* publication formatting */
-    .pub li{margin:10px 0}
-    .pub .journal{font-weight:700; font-style:italic}
-
-    /* grid for two-columns on wide screens */
-    @media (min-width: 860px){
-      .cols{display:grid; grid-template-columns: 1fr 1fr; gap:20px}
-    }
-
-    footer{margin-top:36px; color:#777; font-size:0.92rem}
-    code.inline{background:var(--muted); padding:2px 6px; border-radius:6px}
+    .lang-toggle{position:fixed;top:10px;right:20px;border:1px solid var(--rule);border-radius:999px;padding:4px 10px;font-size:0.85rem;background:#fff;color:var(--heading-gray)}
+    .lang-toggle button{border:none;background:none;cursor:pointer;padding:2px 4px;font:inherit;color:inherit}
+    .lang-toggle button.active{color:var(--link-gold);font-weight:600}
+    section{padding:28px 0;border-bottom:1px solid var(--rule)}
+    h2{font-size:1.25rem;color:var(--heading-gray);margin:0 0 14px}
+    footer{margin-top:36px;color:#777;font-size:0.92rem}
   </style>
-  <!-- Schema.org for a Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Kanji SUZUKI",
-    "email": "mailto:k4suzuki@ucsd.edu",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "University of California San Diego"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "La Jolla",
-      "addressRegion": "California",
-      "postalCode": "92093",
-      "addressCountry": "US"
-    },
-    "url": "https://YOUR-USERNAME.github.io/",
-    "sameAs": [
-      "https://scholar.google.com/citations?user=IBf6ofMAAAAJ&hl=en"
-    ],
-    "knowsAbout": ["Asset Pricing","Macro Finance","Financial Econometrics"]
-  }
-  </script>
 </head>
 <body>
-  <nav aria-label="Primary">
-    <div class="nav-inner">
-      <a class="i18n" data-en="Home" data-ja="ホーム" href="#about">Home</a>
-      <a class="i18n" data-en="Research Interests" data-ja="研究分野" href="#interests">Research Interests</a>
-      <a class="i18n" data-en="Education" data-ja="学歴" href="#education">Education</a>
-      <a class="i18n" data-en="Publications" data-ja="論文" href="#publications">Publications</a>
-      <a class="i18n" data-en="Working Papers" data-ja="ワーキングペーパー" href="#working-papers">Working Papers</a>
-      <a class="i18n" data-en="Awards & Funding" data-ja="受賞・助成" href="#awards">Awards &amp; Funding</a>
-      <a class="i18n" data-en="Teaching" data-ja="教育" href="#teaching">Teaching</a>
-      <a class="i18n" data-en="Academic" data-ja="学術経験" href="#academic-exp">Academic</a>
-      <a class="i18n" data-en="Seminars" data-ja="セミナー発表" href="#seminars">Seminars</a>
-      <a class="i18n" data-en="Industry" data-ja="産業経験" href="#industry">Industry</a>
-      <a class="i18n" data-en="Personal" data-ja="個人" href="#personal">Personal</a>
-      <div class="spacer"></div>
-      <div class="lang-toggle" role="group" aria-label="Language toggle">
-        <button type="button" id="btn-en" aria-pressed="true">EN</button>
-        |
-        <button type="button" id="btn-ja" aria-pressed="false">日本語</button>
-      </div>
-    </div>
-  </nav>
-
+  <div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button type="button" id="btn-en" aria-pressed="true">EN</button>
+    |
+    <button type="button" id="btn-ja" aria-pressed="false">日本語</button>
+  </div>
   <main class="wrap" id="about">
     <header>
-      <div class="brand">
-        <h1>Kanji SUZUKI</h1>
-        <div class="meta">
-          University of California San Diego · La Jolla, California 92093, United States<br />
-          <a href="mailto:k4suzuki@ucsd.edu">k4suzuki@ucsd.edu</a>
-          · <a href="https://scholar.google.com/citations?user=IBf6ofMAAAAJ&hl=en" rel="noopener">Google Scholar</a>
-          · <a href="#" aria-disabled="true" title="Add your ORCID">ORCID: 0000-0000-0000-0000</a>
-        </div>
+      <h1>Kanji SUZUKI</h1>
+      <div class="meta">
+        University of California San Diego · La Jolla, California 92093, United States<br>
+        <a href="mailto:k4suzuki@ucsd.edu">k4suzuki@ucsd.edu</a> · <a href="https://scholar.google.com/citations?user=IBf6ofMAAAAJ&hl=en">Google Scholar</a>
       </div>
     </header>
 
-    <section id="interests" aria-labelledby="h-interests">
-      <h2 id="h-interests" class="i18n-text" data-en="Research interests" data-ja="研究分野">Research interests</h2>
-      <p class="i18n-text" data-en="Asset Pricing; Macro Finance; Financial Econometrics." data-ja="アセットプライシング／マクロファイナンス／ファイナンス計量。">Asset Pricing; Macro Finance; Financial Econometrics.</p>
-    </section>
+    <section id="interests"><h2 class="i18n-text" data-en="Research interests" data-ja="研究分野">Research interests</h2><p>Asset Pricing; Macro Finance; Financial Econometrics.</p></section>
+    <section id="education"><h2 class="i18n-text" data-en="Education" data-ja="学歴">Education</h2></section>
+    <section id="publications"><h2 class="i18n-text" data-en="Publications" data-ja="論文">Publications</h2></section>
+    <section id="working-papers"><h2 class="i18n-text" data-en="Working papers" data-ja="ワーキングペーパー">Working papers</h2></section>
+    <section id="awards"><h2 class="i18n-text" data-en="Awards & Funding" data-ja="受賞・助成">Awards & Funding</h2></section>
+    <section id="teaching"><h2 class="i18n-text" data-en="Teaching experience" data-ja="教育経験">Teaching experience</h2></section>
+    <section id="academic-exp"><h2 class="i18n-text" data-en="Academic experience" data-ja="学術経験">Academic experience</h2></section>
+    <section id="seminars"><h2 class="i18n-text" data-en="Seminars presentations" data-ja="セミナー発表">Seminars presentations</h2></section>
+    <section id="industry"><h2 class="i18n-text" data-en="Industry experience" data-ja="実務経験">Industry experience</h2></section>
+    <section id="personal"><h2 class="i18n-text" data-en="Personal" data-ja="個人">Personal</h2></section>
 
-    <section id="education" aria-labelledby="h-education">
-      <h2 id="h-education" class="i18n-text" data-en="Education" data-ja="学歴">Education</h2>
-      <div class="entry">
-        <div><strong>Ph.D., Finance</strong>, University of California San Diego</div>
-        <div class="when">2025–2030 (expected)</div>
-      </div>
-      <div class="entry">
-        <div><strong>M.Sc., Finance</strong> (summa cum laude), ETH Zurich &amp; University of Zurich</div>
-        <div class="when">2023–2025</div>
-      </div>
-      <div class="entry">
-        <div><strong>B.A., Economics</strong>, University of Tokyo</div>
-        <div class="when">2019–2023</div>
-      </div>
-    </section>
-
-    <section id="publications" aria-labelledby="h-publications">
-      <h2 id="h-publications" class="i18n-text" data-en="Publications" data-ja="論文">Publications</h2>
-      <ul class="pub">
-        <li>
-          New approaches of the multivariate GARCH residual: application to foreign exchange rates. (with K. Shiraya &amp; T. Yamakami),
-          <span class="journal">Quantitative Finance</span>, 1–23, 2025,
-          <a href="https://doi.org/10.1080/14697688.2025.2547829" target="_blank" rel="noopener">link to the paper</a>.
-        </li>
-      </ul>
-    </section>
-
-    <section id="working-papers" aria-labelledby="h-wp">
-      <h2 id="h-wp" class="i18n-text" data-en="Working papers" data-ja="ワーキングペーパー">Working papers</h2>
-      <ul>
-        <li>
-          Diversifying the Meltdown Risk of Cryptocurrencies. (with Y. Sakurai &amp; K. Goshima), Last update: Nov 30, 2024,
-          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5039757" target="_blank" rel="noopener">working paper</a>, revision requested by <span class="journal">Studies in Nonlinear Dynamics &amp; Econometrics</span>.
-        </li>
-        <li>
-          Disentangling the Ripple Effect from Systemic Risk in Stock Markets: The Case of SVB Failure. (with Y. Sakurai &amp; K. Goshima), <em>Submitted</em>.
-        </li>
-        <li>
-          Why Default Nudges Work: Identifying Cognitive Mechanisms with fMRI. (with J. Chikazoe, K. Kawaguchi, K. Uetake, Y. Watanabe &amp; K. Yamada), Last update: Aug 31, 2025,
-          <a href="https://osf.io/preprints/socarxiv/wfrsp_v1" target="_blank" rel="noopener">working paper</a>.
-        </li>
-        <li>
-          Entry by Merger: Estimates from a Two-Sided Matching Model with Externalities. (with K. Uetake &amp; Y. Watanabe), Last update: Dec 9, 2020,
-          <a href="https://ssrn.com/abstract=2188581" target="_blank" rel="noopener">working paper</a>, revision requested by <span class="journal">RAND Journal of Economics</span>.
-        </li>
-      </ul>
-    </section>
-
-    <section id="awards" aria-labelledby="h-awards">
-      <h2 id="h-awards" class="i18n-text" data-en="Awards &amp; Funding" data-ja="受賞・助成">Awards &amp; Funding</h2>
-      <div class="cols">
-        <div>
-          <h3 style="margin:0 0 8px; color:#666; font-size:1.05rem" class="i18n-text" data-en="Awards" data-ja="受賞">Awards</h3>
-          <ul>
-            <li><span class="sub">Corporate Finance Research Encouragement Award (250,000 JPY)</span>, Mizuho Securities and Kyoto University <span class="when">— 2025</span></li>
-            <li><span class="sub">Finance Research Encouragement Award for Students</span>, Japan Government Pension Investment Fund <span class="when">— 2025</span></li>
-            <li><span class="sub">Best Presentation Award</span>, Japan Statistical Society <span class="when">— 2023</span></li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="margin:0 0 8px; color:#666; font-size:1.05rem" class="i18n-text" data-en="Funding" data-ja="助成">Funding</h3>
-          <ul>
-            <li><span class="sub">Japan Student Services Organization Scholarship</span> (4,656,000 JPY/Yr) <span class="when">— 2025–2028</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="teaching" aria-labelledby="h-teaching">
-      <h2 id="h-teaching" class="i18n-text" data-en="Teaching experience" data-ja="教育経験">Teaching experience</h2>
-      <ul>
-        <li class="i18n-text" data-en="University of California San Diego — <em>Graduate</em>: Financial Econometrics and Empirical Method (Fall 2025)" data-ja="カリフォルニア大学サンディエゴ校 — <em>大学院</em>：ファイナンス計量・実証手法（2025年秋学期）">University of California San Diego — <em>Graduate</em>: Financial Econometrics and Empirical Method (Fall 2025)</li>
-      </ul>
-    </section>
-
-    <section id="academic-exp" aria-labelledby="h-academic">
-      <h2 id="h-academic" class="i18n-text" data-en="Academic experience" data-ja="学術経験">Academic experience</h2>
-      <ul>
-        <li>Research Assistant, Yasutora Watanabe, University of Tokyo (2022–)</li>
-        <li>Research Assistant, Semyon Malamud, EPFL (Fall 2024)</li>
-        <li>Research Assistant, Marc Paolella, University of Zurich (Spring 2024)</li>
-        <li>Research Assistant, Keiichi Goshima, Waseda University (2021–2023)</li>
-        <li>Research Assistant, Taisuke Nakata, University of Tokyo (Summer 2020)</li>
-      </ul>
-    </section>
-
-    <section id="seminars" aria-labelledby="h-seminars">
-      <h2 id="h-seminars" class="i18n-text" data-en="Seminars presentations" data-ja="セミナー・学会発表">Seminars presentations</h2>
-      <ul>
-        <li>2024: International Risk Management Conference; International Conference of Quantitative Finance and Financial Econometrics.</li>
-        <li>2023: International Conference of Computing in Economics and Finance; Spring Meeting of Japan Statistical Society; Japan Association of Financial Econometrics and Engineering.</li>
-      </ul>
-    </section>
-
-    <section id="industry" aria-labelledby="h-industry">
-      <h2 id="h-industry" class="i18n-text" data-en="Industry experience" data-ja="実務経験">Industry experience</h2>
-      <ul>
-        <li>Research Intern, UTokyo Economic Consulting Inc. (2020–2025)</li>
-        <li>Quants Intern, Jefferies Inc. (Summer 2023)</li>
-      </ul>
-    </section>
-
-    <section id="personal" aria-labelledby="h-personal">
-      <h2 id="h-personal" class="i18n-text" data-en="Personal" data-ja="個人">Personal</h2>
-      <p>
-        Citizenship: Japan<br />
-        U.S. Visa Status: F-1 Student<br />
-        Languages: Japanese, English<br />
-        Programming: Python, R, MATLAB, C++, SQL
-      </p>
-    </section>
-
-    <footer>
-      <div id="last-updated"><span class="i18n-text" data-en="Updated:" data-ja="最終更新：">Updated:</span> <span></span></div>
-      <script>
-        // Show today's date in ISO-like format (e.g., 2025-11-08)
-        const d=new Date();
-        const z=n=>String(n).padStart(2,'0');
-        document.querySelector('#last-updated span').textContent = `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
-      </script>
-    </footer>
+    <footer><div id="last-updated"><span class="i18n-text" data-en="Updated:" data-ja="最終更新：">Updated:</span> <span></span></div></footer>
   </main>
   <script>
     (function(){
-      const links = document.querySelectorAll('.nav-inner .i18n');
-      const texts = document.querySelectorAll('.i18n-text');
-      const btnEn = document.getElementById('btn-en');
-      const btnJa = document.getElementById('btn-ja');
-      const setLang = (lang)=>{
-        localStorage.setItem('site-lang', lang);
-        links.forEach(a=>{ const label = a.dataset[lang]; if(label) a.textContent = label; });
-        texts.forEach(el=>{ const html = el.dataset[lang]; if(html) el.innerHTML = html; });
-        btnEn.classList.toggle('active', lang==='en');
-        btnJa.classList.toggle('active', lang==='ja');
-        btnEn.setAttribute('aria-pressed', String(lang==='en'));
-        btnJa.setAttribute('aria-pressed', String(lang==='ja'));
-        document.documentElement.lang = (lang==='ja' ? 'ja' : 'en');
+      const texts=document.querySelectorAll('.i18n-text');
+      const btnEn=document.getElementById('btn-en');
+      const btnJa=document.getElementById('btn-ja');
+      const setLang=(lang)=>{
+        localStorage.setItem('site-lang',lang);
+        texts.forEach(el=>{const html=el.dataset[lang];if(html)el.textContent=html;});
+        btnEn.classList.toggle('active',lang==='en');
+        btnJa.classList.toggle('active',lang==='ja');
+        btnEn.setAttribute('aria-pressed',String(lang==='en'));
+        btnJa.setAttribute('aria-pressed',String(lang==='ja'));
+        document.documentElement.lang=lang;
       };
-      btnEn?.addEventListener('click', ()=> setLang('en'));
-      btnJa?.addEventListener('click', ()=> setLang('ja'));
-      // initialize from storage or default based on <html lang>
-      const initial = localStorage.getItem('site-lang') || (document.documentElement.lang==='ja' ? 'ja' : 'en');
+      btnEn.addEventListener('click',()=>setLang('en'));
+      btnJa.addEventListener('click',()=>setLang('ja'));
+      const initial=localStorage.getItem('site-lang')||'en';
       setLang(initial);
+      const d=new Date();const z=n=>String(n).padStart(2,'0');
+      document.querySelector('#last-updated span:last-child').textContent=`${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
     })();
   </script>
 </body>
