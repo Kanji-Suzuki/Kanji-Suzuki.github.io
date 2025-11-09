@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +20,7 @@
     .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 80px}
     header{margin-bottom:32px}
     h1{font-size:clamp(24px,4.2vw,36px);margin:0;color:var(--heading-gray)}
-    .meta{margin-top:4px;font-size:0.95rem;line-height:1.4;}
+    .meta{margin-top:6px;font-size:0.95rem;line-height:1.4;}
     .meta a{color:var(--link-gold);text-decoration:none}
     .meta a:hover{text-decoration:underline}
     .lang-toggle{position:fixed;top:10px;right:20px;border:1px solid var(--rule);border-radius:999px;padding:4px 10px;font-size:0.85rem;background:#fff;color:var(--heading-gray)}
@@ -27,9 +29,6 @@
     section{padding:28px 0;border-bottom:1px solid var(--rule)}
     h2{font-size:1.25rem;color:var(--heading-gray);margin:0 0 14px}
     footer{margin-top:36px;color:#777;font-size:0.92rem}
-      .hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-    .hero-text{flex:1;min-width:260px}
-    @media (max-width:600px){.hero img{width:140px}}
   </style>
 </head>
 <body>
@@ -40,12 +39,15 @@
   </div>
   <main class="wrap" id="about">
     <header>
-      <div class="hero">
-        <div class="hero-text">
-          $1
-          $3
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;justify-content:flex-start;gap:4px;">
+          <h1 class="i18n-text" data-en="Kanji SUZUKI" data-ja="鈴木莞司">Kanji SUZUKI</h1>
+          <div class="meta">
+            <span class="i18n-text" data-en="University of California San Diego · La Jolla, California 92093, United States" data-ja="カリフォルニア大学サンディエゴ校">University of California San Diego · La Jolla, California 92093, United States</span><br>
+            <a href="mailto:k4suzuki@ucsd.edu">k4suzuki@ucsd.edu</a> · <a href="https://scholar.google.com/citations?user=IBf6ofMAAAAJ&hl=en">Google Scholar</a>
+          </div>
         </div>
-        $2
+        <img src="pic/portrait.jpg" alt="Kanji Suzuki" style="width:180px;height:auto;border-radius:8px;object-fit:cover;align-self:flex-start;">
       </div>
     </header>
 
