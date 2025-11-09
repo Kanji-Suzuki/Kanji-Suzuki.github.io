@@ -39,7 +39,10 @@
   </div>
   <main class="wrap" id="about">
     <header>
-      <h1 class="i18n-text" data-en="Kanji SUZUKI" data-ja="鈴木莞司">Kanji SUZUKI</h1>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <h1 class="i18n-text" data-en="Kanji SUZUKI" data-ja="鈴木莞司">Kanji SUZUKI</h1>
+        <img src="pic/portrait.jpg" style="width:120px;height:auto;border-radius:8px;object-fit:cover;">
+      </div>
       <div class="meta">
         <span class="i18n-text" data-en="University of California San Diego · La Jolla, California 92093, United States" data-ja="カリフォルニア大学サンディエゴ校">University of California San Diego · La Jolla, California 92093, United States</span><br>
         <a href="mailto:k4suzuki@ucsd.edu">k4suzuki@ucsd.edu</a> · <a href="https://scholar.google.com/citations?user=IBf6ofMAAAAJ&hl=en">Google Scholar</a>
@@ -56,7 +59,6 @@
       </ul>
     </section>
 
-    <!-- Publications is EN-only (no i18n) per your request -->
     <section id="publications">
       <h2>Publications</h2>
       <ul>
@@ -132,7 +134,6 @@
   </main>
 
   <script>
-    // Single i18n controller (supports HTML in translations)
     (function(){
       const texts=document.querySelectorAll('.i18n-text');
       const btnEn=document.getElementById('btn-en');
@@ -152,7 +153,6 @@
       btnJa&&btnJa.addEventListener('click',()=>setLang('ja'));
       setLang(localStorage.getItem('site-lang')||'en');
 
-      // footer date
       const d=new Date(); const z=n=>String(n).padStart(2,'0');
       const el=document.querySelector('#last-updated span:last-child');
       if(el) el.textContent=`${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
