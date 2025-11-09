@@ -18,7 +18,7 @@
       --rule:#e6e6e6;
       --maxw:960px;
     }
-    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,'Noto Sans JP',sans-serif;color:var(--body-gray);background:var(--bg);line-height:1.6;}
+    body{font-family:Inter,'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic','YuGothic','Meiryo','Noto Sans JP',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--body-gray);background:var(--bg);line-height:1.6;}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:24px 20px 80px}
     header{margin-bottom:32px}
     h1{font-size:clamp(24px,4.2vw,36px);margin:0;color:var(--heading-gray)}
@@ -34,7 +34,12 @@
   </style>
 </head>
 <body>
-  <img src="pic/background.jpg" alt="Background" style="width:100%;height:auto;display:block;margin-bottom:20px;">
+  <picture>
+    <!-- Mobile (<=640px) uses a different hero image; falls back to default if file missing -->
+    <source media="(max-width: 640px)" srcset="background_mobile.jpg">
+    <!-- Desktop / tablet default -->
+    <img src="background.jpg" alt="Background" style="width:100%;height:auto;display:block;margin-bottom:20px;" loading="eager" fetchpriority="high">
+  </picture>
   <div class="lang-toggle" role="group" aria-label="Language toggle">
     <button type="button" id="btn-en" aria-pressed="true">EN</button>
     |
